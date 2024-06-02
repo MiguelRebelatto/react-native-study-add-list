@@ -16,6 +16,10 @@ export default function App() {
     ])
   }
 
+  function deleteGoalHandler(idToDelete) {
+    setCourseGoals((goals) => goals.filter((g) => g.id !== idToDelete))
+  }
+
   return (
     <View style={styles.appContainer}>
       <GoalInput onAddGoal={addGoalHandler} />
@@ -27,7 +31,8 @@ export default function App() {
             return (
               <GoalItem
                 text={itemData.item.text}
-                id={itemData.index}
+                id={itemData.item.id}
+                onDeleteItem={deleteGoalHandler}
               />
             )
           }}
